@@ -1,0 +1,74 @@
+<div class="container" ng-controller="homeCtrl" id="home">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-5">
+        <h1>Needle</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div id="imaginary-container">
+            <div class="input-group stylish-input-group">
+                <input type="text" class="form-control"  placeholder="Search for an artist or album" ng-model="searchParam">
+                <span class="input-group-addon">
+                    <button type="submit" ng-click="searchDiscogs(searchParam)">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+  <!-- <div class="row" id="results-container">
+    <div class="col-sm-12">
+      <div class="col-sm-4" id="result-card" ng-repeat="result in searchResults track by $index">
+        <div class="row">
+          <div class="col-sm-6">
+            <img src="{{result.thumb}}" style="width:100%; padding: 5px;"/>
+          </div>
+          <div class="col-sm-6">
+            <div class="info-container pull-right text-justified">
+              <h6>{{result.title}}</h6>
+              <h6>{{result.year}}</h6>
+              <a href="{{result.uri}}"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  </div>
+  <div class="row" id="results-container">
+    <div class="col-sm-6 col-md-3" ng-repeat="result in searchResults track by $index">
+      <div class="panel panel-default panel-card">
+        <div class="panel-heading">
+          <img src="{{result.thumb}}" />
+        </div>
+        <div class="panel-figure">
+          <img class="img-responsive img-circle" src="{{result.thumb}}" />
+        </div>
+        <div class="panel-body text-center">
+          <h5 class="panel-header">{{result.title}}</h5>
+          <small>{{result.year}}</small>
+        </div>
+        <div class="panel-thumbnails">
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="thumbnail">
+                <img src="http://placemi.com/mzwlj/60x60" />
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="thumbnail">
+                <img src="http://placemi.com/yboaj/60x60" />
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="thumbnail">
+                <img src="http://placemi.com/gv3bp/60x60" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
