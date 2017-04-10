@@ -8,14 +8,23 @@ angular.module('needleHomeCtrl', [])
   $scope.artistUri = "";
   $scope.artistImg = "";
 
+  $scope.showLoad = false;
+  $scope.errorMessage = "";
+
+
   $scope.searchDiscogs = function(searchParam) {
+    $scope.errorMessage = "";
+    toggleSpinner();
     homeContent.searchDiscogs(searchParam)
       .then(function(result){
         trimTitle(result);
         $scope.searchResults = result;
+        toggleSpinner();
       })
       .catch(function(result){
         console.log(result);
+        $scope.errorMessage = result.message;
+        toggleSpinner();
       })
   }
 
@@ -33,5 +42,9 @@ angular.module('needleHomeCtrl', [])
     for (var i = 0; i < result.length; i++) {
       result[i].title = result[i].title.split("-")[1];
     }
+  }
+
+  toggleSpinner = function(){
+    $scope.showLoad = !$scope.showLoad;
   }
 }]);
