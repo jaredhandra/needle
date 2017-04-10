@@ -18,6 +18,17 @@ angular.module('needleHomeCtrl', [])
         console.log(result);
       })
   }
+
+  $scope.viewReleaseInfo = function(resource_url){
+    homeContent.getReleaseInfo(resource_url)
+      .then(function(result){
+        $scope.release = result;
+      })
+      .catch(function(result){
+        console.log(result);
+      })
+  }
+
   trimTitle = function(result) {
     for (var i = 0; i < result.length; i++) {
       result[i].title = result[i].title.split("-")[1];

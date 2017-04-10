@@ -19,19 +19,22 @@ angular.module('needleHomeService', [])
             deferred.reject(response);
           })
         return deferred.promise;
+      },
+      getReleaseInfo : function(resource_url){
+        var deferred = $q.defer();
+        var urlnm =  resource_url;
+
+        $http({
+          method: 'GET',
+          url: urlnm,
+        })
+          .success(function(response){
+            deferred.resolve(response);
+          })
+          .error(function(response){
+            deferred.reject(response);
+          })
+        return deferred.promise;
       }
-      // getUserAccess : function(){
-      //   var deferred = $q.defer();
-      //   var url = "";
-      //   $http
-      //
-      //   .success(function(response)){
-      //     deferred.resolve
-      //   }
-      //   .error(function(response)){
-      //
-      //   }
-      //   return deferred.promise;
-      // }
     };
   }]);

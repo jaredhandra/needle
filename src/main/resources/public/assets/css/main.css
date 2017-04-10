@@ -1,5 +1,6 @@
 body {
   background-color: #FFB74D;
+  font-family: 'Arimo', sans-serif;
 }
 #imaginary-container{
     margin-top: 10%; /* Don't copy this */
@@ -102,14 +103,15 @@ body {
 }
 
 .panel.panel-card .panel-thumbnails {
-    padding: 0 15px 20px;
+    padding-left: 10%;
 }
+/*
 .panel-thumbnails .thumbnail {
     width: 60px;
     max-width: 100%;
     margin: 0 auto;
     background-color: #fff;
-}
+}*/
 
 
 .panel.panel-card:hover .panel-heading {
