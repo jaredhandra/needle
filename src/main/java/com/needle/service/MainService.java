@@ -10,9 +10,8 @@ import com.needle.domain.Release;
 
 public class MainService {
 	
-	public static Map executeGet(String targetURL, String params){
-		//api key goes here
-		String auth = "";
+	public static Map executeGet(String targetURL){
+		String auth = "apikeyhere";
 		String url = targetURL + auth;
 		RestTemplate restTemplate = new RestTemplate();
 		Map response = restTemplate.getForObject(url, Map.class);
@@ -26,7 +25,7 @@ public class MainService {
 		
 		try {
 			System.out.println(targetURL);
-			response = executeGet(targetURL,searchParam);
+			response = executeGet(targetURL);
 			Map pag = (Map) response.get("pagination");
 			DiscogsPagination disPag = new DiscogsPagination();
 			disPag.setItems(pag.get("items").toString());
@@ -40,5 +39,20 @@ public class MainService {
 		}
 
 		return rel;
+	}
+
+	public static String getReleaseInfo(String id) {
+		String targetURL = "https://api.discogs.com/releases/" + id;
+		String release = "";
+		Map response = null;
+		
+		try {
+			System.out.println(targetURL);
+			RestTemplate restTemplate = new RestTemplate();
+			release = restTemplate.getForObject(targetURL, String.class);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return release;
 	}
 }

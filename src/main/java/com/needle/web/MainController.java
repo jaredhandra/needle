@@ -14,6 +14,7 @@ import com.needle.service.MainService;
 @RestController
 public class MainController {
 	
+	@SuppressWarnings("serial")
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public class ResourceNotFoundException extends RuntimeException {
 		public ResourceNotFoundException(String message) {
@@ -31,6 +32,15 @@ public class MainController {
 		} else {
 			throw new ResourceNotFoundException("No results found, please search another artist."); 
 		}
-		
     }
+    
+    @RequestMapping("/getreleaseinfo")
+    public String getReleaseInfo(@RequestParam(value="id") String id){
+    	System.out.println("Endpoint: getreleaseinfo hit");
+    	String response = null;
+    	response = MainService.getReleaseInfo(id);
+    	
+    	return response;
+    }
+    
 }

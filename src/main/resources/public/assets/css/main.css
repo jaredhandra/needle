@@ -1,6 +1,9 @@
 body {
-  background-color: #FFB74D;
+  background-color: #27ae60;
   font-family: 'Arimo', sans-serif;
+}
+#home-header {
+  color: #ecf0f1;
 }
 #imaginary-container{
     margin-top: 10%; /* Don't copy this */
@@ -142,7 +145,7 @@ body {
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: #ecf0f1;
   height: 100%;
   width: 6px;
   display: inline-block;

@@ -3,14 +3,10 @@ angular.module('needleHomeCtrl', [])
 
   $scope.searchParam = "";
   $scope.searchResults = [];
-
-  $scope.artist = "";
-  $scope.artistUri = "";
-  $scope.artistImg = "";
-
   $scope.showLoad = false;
   $scope.errorMessage = "";
-
+  $scope.albumArt = "";
+  $scope.releaseNotes = false;
 
   $scope.searchDiscogs = function(searchParam) {
     $scope.errorMessage = "";
@@ -28,8 +24,9 @@ angular.module('needleHomeCtrl', [])
       })
   }
 
-  $scope.viewReleaseInfo = function(resource_url){
-    homeContent.getReleaseInfo(resource_url)
+  $scope.viewReleaseInfo = function(id, thumb){
+    $scope.albumArt = thumb;
+    homeContent.getReleaseInfo(id)
       .then(function(result){
         $scope.release = result;
       })
@@ -46,5 +43,10 @@ angular.module('needleHomeCtrl', [])
 
   toggleSpinner = function(){
     $scope.showLoad = !$scope.showLoad;
+  }
+
+  toggleReleaseNotes = function(){
+    $scope.releaseNotes = !$scope.releaseNotes;
+    console.log($scope.releaseNotes);
   }
 }]);
