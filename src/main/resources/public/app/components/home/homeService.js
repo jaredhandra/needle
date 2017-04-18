@@ -55,6 +55,5 @@ angular.module('needleHomeService', [])
           })
         return deferred.promise;
       }
-
     };
   }]);
