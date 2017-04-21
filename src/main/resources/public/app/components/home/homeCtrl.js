@@ -7,6 +7,7 @@ angular.module('needleHomeCtrl', [])
   $scope.errorMessage = "";
   $scope.albumArt = "";
   $scope.releaseNotes = false;
+  $scope.artist = "";
 
   $scope.searchDiscogs = function(searchParam) {
     $scope.errorMessage = "";
@@ -15,6 +16,7 @@ angular.module('needleHomeCtrl', [])
       .then(function(result){
         trimTitle(result);
         $scope.searchResults = result;
+        $scope.artist = searchParam;
         toggleSpinner();
       })
       .catch(function(result){
@@ -35,6 +37,18 @@ angular.module('needleHomeCtrl', [])
       })
   }
 
+  $scope.sendTweet = function(title, uri){
+    artist = $scope.artist;
+    uri = "https://www.discogs.com" + uri;
+    homeContent.sendTweet(title, artist, uri)
+      .then(function(result){
+        console.log('tweet sent');
+      })
+      .catch(function(result){
+        console.log(result);
+      })
+  }
+
   trimTitle = function(result) {
     for (var i = 0; i < result.length; i++) {
       result[i].title = result[i].title.split("-")[1];
@@ -49,4 +63,5 @@ angular.module('needleHomeCtrl', [])
     $scope.releaseNotes = !$scope.releaseNotes;
     console.log($scope.releaseNotes);
   }
+
 }]);

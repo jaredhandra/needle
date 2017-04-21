@@ -3,7 +3,7 @@ angular.module('needleHomeService', [])
     return {
       searchDiscogs : function(searchParameter){
         var deferred = $q.defer();
-        var urlnm =  'http://localhost:8080/searchrelease';
+        var urlnm =  '/searchrelease';
 
         $http({
           method: 'GET',
@@ -22,7 +22,7 @@ angular.module('needleHomeService', [])
       },
       getReleaseInfo : function(id){
         var deferred = $q.defer();
-        var urlnm =  'http://localhost:8080/getreleaseinfo';
+        var urlnm =  '/getreleaseinfo';
 
         $http({
           method: 'GET',
@@ -46,6 +46,27 @@ angular.module('needleHomeService', [])
         $http({
           method: 'GET',
           url: urlnm,
+        })
+          .success(function(response){
+            deferred.resolve(response);
+          })
+          .error(function(response){
+            deferred.reject(response);
+          })
+        return deferred.promise;
+      },
+      sendTweet : function(title, artist, uri){
+        var deferred = $q.defer();
+        var urlnm = '/posttweet';
+
+        $http({
+          method: 'POST',
+          url: urlnm,
+          data : {
+            "title" : title,
+            "artist" : artist,
+            "uri" : uri
+          }
         })
           .success(function(response){
             deferred.resolve(response);
