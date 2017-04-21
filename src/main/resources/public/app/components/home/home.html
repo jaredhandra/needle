@@ -35,7 +35,7 @@
           <img src="{{result.thumb}}" />
         </div>
         <div class="panel-figure">
-          <img class="img-responsive img-circle" src="{{result.thumb}}" />
+          <img class="img-responsive" src="{{result.thumb}}" />
         </div>
         <div class="panel-body text-center">
           <h5 class="panel-header">{{result.title}}</h5>
@@ -49,7 +49,7 @@
               </a>
             </div>
             <div class="col-xs-4">
-              <a href="https://www.discogs.com/{{result.uri}}" target="_blank">
+              <a href="" target="_blank" ng-click="sendTweet(result.title, result.uri)">
                 <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
               </a>
             </div>

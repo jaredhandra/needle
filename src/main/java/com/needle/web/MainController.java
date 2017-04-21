@@ -3,13 +3,17 @@ package com.needle.web;
 import java.util.ArrayList;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.needle.domain.Release;
+import com.needle.domain.TweetObject;
 import com.needle.service.MainService;
+
+import twitter4j.TwitterException;
 
 @RestController
 public class MainController {
@@ -24,7 +28,7 @@ public class MainController {
     
     @RequestMapping("/searchrelease")
     public ArrayList<Release> searchRelease(@RequestParam(value="searchParam") String searchParam){
-    	System.out.println("Endpoint: searchrelease hit");
+    	System.out.println("Endpoint: searchrelease");
     	ArrayList<Release> response = null;
 		response = MainService.searchRelease(searchParam);
 		if(!response.isEmpty()) {
@@ -36,11 +40,16 @@ public class MainController {
     
     @RequestMapping("/getreleaseinfo")
     public String getReleaseInfo(@RequestParam(value="id") String id){
-    	System.out.println("Endpoint: getreleaseinfo hit");
+    	System.out.println("Endpoint: getreleaseinfo");
     	String response = null;
     	response = MainService.getReleaseInfo(id);
-    	
     	return response;
+    }
+    
+    @RequestMapping("/posttweet")
+    public void postTweet(@RequestBody TweetObject tweet) throws TwitterException{
+    	System.out.println("Endpoint: posttweet");
+    	MainService.postTweet(tweet);
     }
     
 }

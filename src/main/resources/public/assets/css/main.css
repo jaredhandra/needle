@@ -85,7 +85,6 @@ body {
     width: 70px;
     height: 70px;
     background-color: #fff;
-    border-radius: 50%;
     opacity: 1;
     -webkit-box-shadow: 0 0 0 3px #fff;
             box-shadow: 0 0 0 3px #fff;
@@ -96,7 +95,6 @@ body {
     -webkit-transition: opacity 400ms ease-in-out;
             transition: opacity 400ms ease-in-out;
 }
-
 .panel.panel-card .panel-body {
     padding-top: 40px;
     padding-bottom: 30px;
